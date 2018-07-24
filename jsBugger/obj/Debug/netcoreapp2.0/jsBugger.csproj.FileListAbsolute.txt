@@ -1,0 +1,11 @@
+c:\users\muham\Source\Repos\jsBugger\jsBugger\obj\Debug\netcoreapp2.0\jsBugger.csproj.CoreCompileInputs.cache
+c:\users\muham\Source\Repos\jsBugger\jsBugger\obj\Debug\netcoreapp2.0\jsBugger.AssemblyInfoInputs.cache
+c:\users\muham\Source\Repos\jsBugger\jsBugger\obj\Debug\netcoreapp2.0\jsBugger.AssemblyInfo.cs
+c:\users\muham\Source\Repos\jsBugger\jsBugger\bin\Debug\netcoreapp2.0\jsBugger.deps.json
+c:\users\muham\Source\Repos\jsBugger\jsBugger\bin\Debug\netcoreapp2.0\jsBugger.runtimeconfig.json
+c:\users\muham\Source\Repos\jsBugger\jsBugger\bin\Debug\netcoreapp2.0\jsBugger.runtimeconfig.dev.json
+c:\users\muham\Source\Repos\jsBugger\jsBugger\bin\Debug\netcoreapp2.0\jsBugger.dll
+c:\users\muham\Source\Repos\jsBugger\jsBugger\bin\Debug\netcoreapp2.0\jsBugger.pdb
+c:\users\muham\Source\Repos\jsBugger\jsBugger\obj\Debug\netcoreapp2.0\jsBugger.dll
+c:\users\muham\Source\Repos\jsBugger\jsBugger\obj\Debug\netcoreapp2.0\jsBugger.pdb
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Debug\netcoreapp2.0\jsBugger.csprojAssemblyReference.cache
