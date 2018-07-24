@@ -1,0 +1,14 @@
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\libhostpolicy.so
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\libhostfxr.so
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\jsBugger
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\jsBugger.deps.json
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\jsBugger.runtimeconfig.json
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\jsBugger.runtimeconfig.dev.json
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\jsBugger.dll
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\bin\Release\netcoreapp2.0\linux-x64\jsBugger.pdb
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Release\netcoreapp2.0\linux-x64\jsBugger.csprojAssemblyReference.cache
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Release\netcoreapp2.0\linux-x64\jsBugger.csproj.CoreCompileInputs.cache
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Release\netcoreapp2.0\linux-x64\jsBugger.AssemblyInfoInputs.cache
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Release\netcoreapp2.0\linux-x64\jsBugger.AssemblyInfo.cs
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Release\netcoreapp2.0\linux-x64\jsBugger.dll
+C:\Users\muham\Source\Repos\jsBugger\jsBugger\obj\Release\netcoreapp2.0\linux-x64\jsBugger.pdb

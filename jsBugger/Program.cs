@@ -6,24 +6,33 @@ namespace jsBugger
 {
     class Program
     {
+        static string[] fileText;
         static void Main(string[] args)
         {
-            var fileText = File.ReadAllLines("C:\\Users\\muham\\Desktop\\spApi.js");
-            for (int i = 0; i < fileText.Length; i++)
+            try
             {
-                int emptyLine = fileText[i] == "" ? 1 : 0;
-                Tokenizer.GetTokenFromString(fileText[i], emptyLine);
-                Parser p = new Parser();
-                p.StartParse(Tokenizer.Tokens, i + 1);
-                if (Parser.inFunction)
+                var fileText = File.ReadAllLines(args[0]);
+
+                for (int i = 0; i < fileText.Length; i++)
                 {
-                    Parser.lastAppenedFunctionCounter++;
+                    int emptyLine = fileText[i] == "" ? 1 : 0;
+                    Tokenizer.GetTokenFromString(fileText[i], emptyLine);
+                    Parser p = new Parser();
+                    p.StartParse(Tokenizer.Tokens, i + 1);
+                    if (Parser.inFunction)
+                    {
+                        Parser.lastAppenedFunctionCounter++;
+                    }
+                    Tokenizer.Tokens = new System.Collections.Generic.List<Token>();
                 }
-                Tokenizer.Tokens = new System.Collections.Generic.List<Token>();
+                Console.WriteLine("");
+                Console.WriteLine("Finished.");
+                Console.ReadKey();
             }
-            Console.WriteLine("");
-            Console.WriteLine("Finished.");
-            Console.ReadKey();
+            catch (Exception)
+            {
+                Console.WriteLine("Dosya okuması başarısız.");
+            }
         }
     }
 }
