@@ -207,6 +207,11 @@ namespace Core.Parse
                         t.Index = Index;
                         t.TokenString = item;
                         break;
+                    case "\\":
+                        t.TokenType = WORD.LSLASH;
+                        t.Index = Index;
+                        t.TokenString = item;
+                        break;
                     case "'":
                         t.TokenType = WORD.DQUOTE;
                         t.Index = Index;
@@ -265,6 +270,7 @@ namespace Core.Parse
             FULL_STRING = FULL_STRING.Replace("/*"," /* ");
             FULL_STRING = FULL_STRING.Replace("*/"," */ ");
             FULL_STRING = FULL_STRING.Replace("'"," ' ");
+            FULL_STRING = FULL_STRING.Replace("\\"," \\ ");
 
             FULL_STRING = FULL_STRING.Replace("+"," + ");
             FULL_STRING = FULL_STRING.Replace("="," = ");

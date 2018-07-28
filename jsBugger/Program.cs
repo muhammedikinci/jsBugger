@@ -11,7 +11,8 @@ namespace jsBugger
         {
             try
             {
-                var fileText = File.ReadAllLines(args[0]);
+                var fileText = File.ReadAllLines("C:\\Users\\muham\\Desktop\\spApi.js");
+                //var fileText = File.ReadAllLines(args[0]);
 
                 for (int i = 0; i < fileText.Length; i++)
                 {

@@ -48,6 +48,7 @@ namespace Core.Parse
         TYPEOF,
         PROGRAMSTATEMENT,
         USERINPUT,
+        LSLASH,
         EMPTY
     }
 

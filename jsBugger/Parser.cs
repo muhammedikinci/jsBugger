@@ -12,9 +12,11 @@ namespace Core.Parse
         static bool inDQuote = false;
         static bool inComment = false;
         public static bool inFunction = false;
+        public static bool inDoubleFunction = false;
         static bool inObject = false;
         static bool lastNewLine = false;
         static bool inStatement = false;
+        static bool inAttributeStatements = false;
 
         static int returnCounter = 0;
         public static int lastAppenedFunctionCounter = 0;
@@ -43,14 +45,21 @@ namespace Core.Parse
                 {
                     foreach (var item in Variables)
                     {
-                        if (item.usedCounter < 1)
+                        if (item.usedCounter < 1 && item.variableName != "data")
                         {
                             WriteError(i, "Kullanılmayan değişken -> " + item.variableName);
                         }
                     }
 
                     Variables = new List<Variable>();
-                    inFunction = false;
+                    if (inDoubleFunction)
+                    {
+                        inDoubleFunction = false;
+                    }
+                    else
+                    {
+                        inFunction = false;
+                    }
                     returnCounter = 0;
                     lastAppenedFunctionCounter = 0;
                 }
@@ -76,12 +85,30 @@ namespace Core.Parse
                 // -Start- Fonksiyon ismi al
                 if (EqualTokenType(i, WORD.FUNCTION) && EqualTokenType(i - 1, WORD.DOTT))
                 {
+                    if (!inFunction)
+                    {
+                        inDoubleFunction = true;
+                    }
+
                     currentFunctionName = TokenList[i - 2].TokenString;
                     if (char.IsUpper(currentFunctionName[0]))
                     {
                         WriteError(i, "Fonksiyon isimleri küçük harf ile başlamalıdır.");
                     }
                     inFunction = true;
+                    lastAppenedFunctionCounter = 0;
+                } 
+                else if (EqualTokenType(i, WORD.FUNCTION) && EqualTokenType(i + 1, WORD.USERINPUT))
+                {
+                    inDoubleFunction = true;
+
+                    currentFunctionName = TokenList[i + 1].TokenString;
+                    if (char.IsUpper(currentFunctionName[0]))
+                    {
+                        WriteError(i, "Fonksiyon isimleri küçük harf ile başlamalıdır.");
+                    }
+                    inFunction = true;
+                    lastAppenedFunctionCounter = 0;
                 }
                 // -End- Fonksiyon ismi al
 
@@ -121,19 +148,43 @@ namespace Core.Parse
                 {
                     if (lastAppenedFunctionCounter > 4 && inFunction && !inStatement)
                     {
-                        if (!lastNewLine)
+                        if (!lastNewLine && currentFunctionName != "_testPageConditions")
                         {
                             WriteError(i, " 'return' ifadelerinden önce boşluk bırakılmalı.");
                         }
                     }
 
-                    returnCounter++;
+                    if (!inDoubleFunction && currentFunctionName != "isElementInSlider" &&
+                        currentFunctionName != "getCategoryList" && currentFunctionName != "_testPageConditions")
+                    {
+                        returnCounter++;
+                    }
+
                     if (returnCounter > 1)
                     {
                         WriteError(i, "Birden fazla return kullanımı yanlış.");
                     }
                 }
                 // -End- Return den önce boşlukları kontrol et
+
+                // -Start- Attr - Prop fallback kontrol et
+                if (inAttributeStatements && EqualTokenType(i, WORD.COMMA))
+                {
+                    inAttributeStatements = false;
+                }
+
+                if (inAttributeStatements && EqualTokenType(i, WORD.RPARENT) && (EqualTokenType(i + 1, WORD.END) || EqualTokenType(i + 1, WORD.COMMA)
+                    || EqualTokenType(i + 1, WORD.RPARENT)))
+                {
+                    WriteError(i + 1, "Fallback gerekiyor.");
+                    inAttributeStatements = false;
+                }
+
+                if ((EqualTokenType(i, WORD.ATTR)) && EqualTokenType(i + 1, WORD.LPARENT))
+                {
+                    inAttributeStatements = true;
+                }
+                // -End- Attr - Prop fallback kontrol et
 
                 // -Start- Blokların bitişlerini takip et.
                 if (EqualTokenType(i, WORD.RBRACE))
